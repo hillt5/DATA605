@@ -1,0 +1,341 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Assignment 1 for DATA 605},
+  pdfauthor={Thomas Hill},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Assignment 1 for DATA 605}
+\author{Thomas Hill}
+\date{}
+
+\begin{document}
+\maketitle
+
+ASSIGNMENT 1 IS 605 FUNDAMENTALS OF COMPUTATIONAL MATHEMATICS - FALL
+2014
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Problem set 1
+\end{enumerate}
+
+You can think of vectors representing many dimensions of related
+information. For instance, Netflix might store all the ratings a user
+gives to movies in a vector. This is clearly a vector of very large
+dimensions (in the millions) and very sparse as the user might have
+rated only a few movies. Similarly, Amazon might store the items
+purchased by a user in a vector, with each slot or dimension
+representing a unique product and the value of the slot, the number of
+such items the user bought. One task that is frequently done in these
+settings is to find similarities between users. And, we can use
+dot-product between vectors to do just that. As you know, the
+dot-product is proportional to the length of two vectors and to the
+angle between them. In fact, the dot-product between two vectors,
+normalized by their lengths is called as the cosine distance and is
+frequently used in recommendation engines.
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\tightlist
+\item
+  Calculate the dot product u:v where u = {[}0:5; 0:5{]} and v =
+  {[}3;􀀀4{]}
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{u \textless{}{-}}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.5}\NormalTok{), }\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{)}
+\NormalTok{v \textless{}{-}}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{),}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{)}
+
+\NormalTok{u\_v\_dot\_m \textless{}{-}}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(u[}\DecValTok{0}\NormalTok{]}\OperatorTok{*}\NormalTok{v[}\DecValTok{0}\NormalTok{],u[}\DecValTok{1}\NormalTok{]}\OperatorTok{*}\NormalTok{v[}\DecValTok{1}\NormalTok{]),}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{)}
+
+\NormalTok{u\_v\_dot\_product \textless{}{-}}\StringTok{ }\NormalTok{(u\_v\_dot\_m[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{]}\OperatorTok{**}\DecValTok{2} \OperatorTok{+}\StringTok{ }\NormalTok{u\_v\_dot\_m[}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{]}\OperatorTok{**}\DecValTok{2}\NormalTok{)}\OperatorTok{**}\FloatTok{0.5}
+
+\KeywordTok{print}\NormalTok{(u\_v\_dot\_m) }\CommentTok{\#vector}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]  1.5  1.5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{print}\NormalTok{(}\KeywordTok{round}\NormalTok{(u\_v\_dot\_product,}\DecValTok{3}\NormalTok{)) }\CommentTok{\#length of vector}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2.121
+\end{verbatim}
+
+\textbf{The dot product is a special case of the inner product of a
+matrix, and is calculated by finding the product of the \emph{ith}
+element in two vectors of the same dimension, then using the distance
+formula to determine a scalar value.}
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  What are the lengths of u and v? Please note that the mathematical
+  notion of the length of a vector is not the same as a computer science
+  definition.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{u\_len \textless{}{-}}\StringTok{ }\NormalTok{(u[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{]}\OperatorTok{**}\DecValTok{2} \OperatorTok{+}\StringTok{ }\NormalTok{u[}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{]}\OperatorTok{**}\DecValTok{2}\NormalTok{)}\OperatorTok{**}\FloatTok{0.5}
+\NormalTok{v\_len \textless{}{-}}\StringTok{ }\NormalTok{(v[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{]}\OperatorTok{**}\DecValTok{2} \OperatorTok{+}\StringTok{ }\NormalTok{v[}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{]}\OperatorTok{**}\DecValTok{2}\NormalTok{)}\OperatorTok{**}\FloatTok{0.5}
+
+\KeywordTok{print}\NormalTok{(}\KeywordTok{round}\NormalTok{(u\_len,}\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.707
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{print}\NormalTok{(v\_len)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  What is the linear combination: 3u -􀀀 2v?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{u\_v\_comb \textless{}{-}}\StringTok{ }\DecValTok{3} \OperatorTok{*}\StringTok{ }\NormalTok{u }\OperatorTok{{-}}\StringTok{ }\DecValTok{2} \OperatorTok{*}\StringTok{ }\NormalTok{v}
+
+\KeywordTok{print}\NormalTok{(u\_v\_comb)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,] -4.5 -6.5
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  What is the angle between u and v?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{u\_v\_angle \textless{}{-}}\StringTok{ }\KeywordTok{acos}\NormalTok{(u\_v\_dot\_product }\OperatorTok{/}\StringTok{ }\NormalTok{(u\_len }\OperatorTok{*}\StringTok{ }\NormalTok{v\_len)) }\CommentTok{\#this is in radians}
+
+\NormalTok{u\_v\_angle\_deg \textless{}{-}}\StringTok{ }\NormalTok{u\_v\_angle }\OperatorTok{*}\StringTok{ }\NormalTok{(}\DecValTok{180}\OperatorTok{/}\StringTok{ }\NormalTok{pi)}
+
+\KeywordTok{print}\NormalTok{(}\KeywordTok{round}\NormalTok{(u\_v\_angle\_deg,}\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 53.13
+\end{verbatim}
+
+\textbf{The angle between these two vectors is approximately 53 degrees.
+I found this by using the formula for dot product of two vectors, which
+is equal to the product of lengths a and b multiplied by the cosine of
+their angle.}
+
+You can use R-markdown to submit your responses to this problem set. If
+you decide to do it in paper, then please either scan it or take a
+picture using a smartphone and attach that picture. Please make sure
+that the picture is legible before submitting.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Problem set 2 Set up a system of equations with 3 variables and 3
+  constraints and solve for x. Please write a function in R that will
+  take two variables (matrix A \& constraint vector b) and solve using
+  elimination. Your function should produce the right answer for the
+  system of equations for any 3-variable, 3-equation system. You don't
+  have to worry about degenerate cases and can safely assume that the
+  function will only be tested with a system of equations that has a
+  solution. Please note that you do have to worry about zero pivots,
+  though. Please note that you should not use the built-in function
+  solve to solve this system or use matrix inverses. The approach that
+  you should employ is to construct an Upper Triangular Matrix and then
+  back-substitute to get the solution. Alternatively, you can augment
+  the matrix A with vector b and jointly apply the Gauss Jordan
+  elimination procedure.
+\end{enumerate}
+
+IS 605 FUNDAMENTALS OF COMPUTATIONAL MATHEMATICS - FALL 2014 Please test
+it with the system below and it should produce a solution x =
+{[}􀀀1:55;􀀀0:32; 0:95{]}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{getSolutions \textless{}{-}}\StringTok{ }\ControlFlowTok{function}\NormalTok{(matA, matB) \{}
+
+\NormalTok{  matAB \textless{}{-}}\StringTok{ }\KeywordTok{cbind}\NormalTok{(matA,matB) }\CommentTok{\#combination of coefficient and constraint matrices}
+  \ControlFlowTok{if}\NormalTok{(matAB[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{] }\OperatorTok{!=}\StringTok{ }\DecValTok{0}\NormalTok{) \{ }
+\NormalTok{    matAB[}\DecValTok{1}\NormalTok{,] \textless{}{-}}\StringTok{ }\NormalTok{matAB[}\DecValTok{1}\NormalTok{,]}\OperatorTok{/}\NormalTok{matAB[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{] }\CommentTok{\#set the first row\textquotesingle{}s first column equal to one}
+\NormalTok{  \}}
+  \ControlFlowTok{if}\NormalTok{(matAB[}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{] }\OperatorTok{!=}\StringTok{ }\DecValTok{0}\NormalTok{) \{}
+\NormalTok{    matAB[}\DecValTok{2}\NormalTok{,] \textless{}{-}}\StringTok{ }\NormalTok{matAB[}\DecValTok{2}\NormalTok{,] }\OperatorTok{{-}}\StringTok{ }\NormalTok{(matAB[}\DecValTok{1}\NormalTok{,] }\OperatorTok{*}\NormalTok{matAB[}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{]) }\CommentTok{\#set the second row\textquotesingle{}s first column equal to zero}
+\NormalTok{    matAB[}\DecValTok{2}\NormalTok{,] \textless{}{-}}\StringTok{ }\NormalTok{matAB[}\DecValTok{2}\NormalTok{,]}\OperatorTok{/}\NormalTok{matAB[}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{] }\CommentTok{\#set the second row\textquotesingle{}s second column equal to one}
+\NormalTok{  \}}
+  
+  \ControlFlowTok{if}\NormalTok{(matAB[}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{] }\OperatorTok{!=}\StringTok{ }\DecValTok{0}\NormalTok{) \{}
+\NormalTok{    matAB[}\DecValTok{3}\NormalTok{,] \textless{}{-}}\StringTok{ }\NormalTok{matAB[}\DecValTok{3}\NormalTok{,] }\OperatorTok{{-}}\StringTok{ }\NormalTok{(matAB[}\DecValTok{1}\NormalTok{,] }\OperatorTok{*}\NormalTok{matAB[}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{]) }\CommentTok{\#set the third row\textquotesingle{}s first column equal to zero}
+\NormalTok{    matAB[}\DecValTok{3}\NormalTok{,] \textless{}{-}}\StringTok{ }\NormalTok{matAB[}\DecValTok{3}\NormalTok{,] }\OperatorTok{{-}}\StringTok{ }\NormalTok{(matAB[}\DecValTok{2}\NormalTok{,] }\OperatorTok{*}\NormalTok{matAB[}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{]) }\CommentTok{\#set the third row\textquotesingle{}s first column equal to zero}
+\NormalTok{    matAB[}\DecValTok{3}\NormalTok{,] \textless{}{-}}\StringTok{ }\NormalTok{matAB[}\DecValTok{3}\NormalTok{,]}\OperatorTok{/}\NormalTok{matAB[}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{] }\CommentTok{\#set the third row\textquotesingle{}s third column equal to one}
+\NormalTok{  \}}
+  
+\NormalTok{  matSols \textless{}{-}}\StringTok{ }\NormalTok{matAB[,}\DecValTok{4}\NormalTok{] }\CommentTok{\#define new matrix containing the solutions}
+\NormalTok{  matSols[}\DecValTok{2}\NormalTok{] =}\StringTok{ }\NormalTok{matSols[}\DecValTok{2}\NormalTok{] }\OperatorTok{{-}}\StringTok{ }\NormalTok{matAB[}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{] }\OperatorTok{*}\StringTok{ }\NormalTok{matSols[}\DecValTok{3}\NormalTok{] }\CommentTok{\#subsitute the solution of x3 into row 2}
+\NormalTok{  matSols[}\DecValTok{1}\NormalTok{] =}\StringTok{ }\NormalTok{matSols[}\DecValTok{1}\NormalTok{] }\OperatorTok{{-}}\StringTok{ }\NormalTok{matAB[}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{] }\OperatorTok{*}\StringTok{ }\NormalTok{matSols[}\DecValTok{3}\NormalTok{] }\OperatorTok{{-}}\StringTok{ }\NormalTok{matAB[}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{] }\OperatorTok{*}\StringTok{ }\NormalTok{matSols[}\DecValTok{2}\NormalTok{] }\CommentTok{\#substitute the solutions of x2, x3 into row 1}
+\NormalTok{  matSols \textless{}{-}}\StringTok{ }\KeywordTok{round}\NormalTok{(matSols,}\DecValTok{2}\NormalTok{)}
+
+  \KeywordTok{print}\NormalTok{(matSols)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{The above function accepts two matrices: the coefficients and
+constraints, then generates an upper triangular matrix by eliminating
+the affected columns from rows 2 and 3. It also checks whether these
+leading functions are zero to begin with. Finally, it substitutes the
+known solutions into the first two rows and provides an an array of
+solutions.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{assign\_matrix \textless{}{-}}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\OperatorTok{{-}}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\OperatorTok{{-}}\DecValTok{1}\NormalTok{,}\OperatorTok{{-}}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{4}\NormalTok{),}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{)}
+\NormalTok{assign\_constraints \textless{}{-}}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{6}\NormalTok{), }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+
+
+\KeywordTok{print}\NormalTok{(}\KeywordTok{getSolutions}\NormalTok{(assign\_matrix,assign\_constraints))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -1.55 -0.32  0.95
+## [1] -1.55 -0.32  0.95
+\end{verbatim}
+
+\end{document}
