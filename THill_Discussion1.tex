@@ -1,0 +1,115 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Discussion 1},
+  pdfauthor={Thomas Hill},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Discussion 1}
+\author{Thomas Hill}
+\date{}
+
+\begin{document}
+\maketitle
+
+\hypertarget{t10}{%
+\subsection{\texorpdfstring{\textbf{T10}}{T10}}\label{t10}}
+
+\hypertarget{an-inconsistent-system-may-have-r-n.-if-we-try-incorrectly-to-apply-theorem-fvcs-to-such-a-system-how-many-free-variables-would-we-discover}{%
+\subsection{An inconsistent system may have r \textgreater{} n.~If we
+try (incorrectly!) to apply Theorem FVCS to such a system, how many free
+variables would we
+discover?}\label{an-inconsistent-system-may-have-r-n.-if-we-try-incorrectly-to-apply-theorem-fvcs-to-such-a-system-how-many-free-variables-would-we-discover}}
+
+An inconsistent system is one where there is no solution. This means
+that there are neither one solution, nor many solutions. This is because
+two of the rows contain identical coefficents but different constraints.
+
+As an example with algebra, one equation may be \emph{x + 2y + z = 0},
+and another equation \emph{x + 2y + z = -8}. Eliminating one either of
+these with one another will generate a row of the matrix where there are
+still is one nonzero value, but it occupies the constraint column. The
+corresponding solved\\
+equation would be something like \emph{0 = -8}, or if each side divided
+by -8, \emph{0 = 1}. In this case, the value of r would artifically be
+increaesd by 2. Graphically, this means that the equations run parallel
+to each other. Omitting one equation will provide at least one soluton
+but no one point can satisfy both equations as they do not intersect
+with each other.
+
+The FVCS theorem is as follows:
+
+\hypertarget{theorem-fvcs-free-variables-for-consistent-systems}{%
+\subsubsection{Theorem FVCS Free Variables for Consistent
+Systems}\label{theorem-fvcs-free-variables-for-consistent-systems}}
+
+Suppose A is the augmented matrix of a consistent system of linear
+equations with n variables. Suppose also that B is a row-equivalent
+matrix in reduced row-echelon form with r rows that are not completely
+zeros. Then the solution set can be described with n -􀀀 r free
+variables.
+
+In this case, the value r will overcount the number of echelon-reduced
+rows by the number of inconsistent equations. If r \textgreater{} n,
+then the formula would result in a negative amount of free variables and
+it could immediatley be concluded that this was an inconsistent system.
+
+\end{document}

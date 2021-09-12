@@ -1,0 +1,33 @@
+---
+title: "Discussion 1"
+author: "Thomas Hill"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+## __T10__ 
+
+## An inconsistent system may have r > n. If we try (incorrectly!) to apply Theorem FVCS to such a system, how many free variables would we discover?
+
+
+An inconsistent system is one where there is no solution. This means that there are  neither one solution, nor many solutions. This is because two of the rows contain identical coefficents 
+but different constraints. 
+
+As an example with algebra, one equation may be _x + 2y + z = 0_, and another equation _x + 2y + z = -8_.  Eliminating one either of these with one another will generate a row of the matrix 
+where there are still is one nonzero value, but it occupies the constraint column. The corresponding solved  
+equation would be something like _0 = -8_, or if each side divided by -8, _0 = 1_. In this case, the value of r would artifically 
+be increaesd by 2. Graphically, this means that the equations run parallel to each other. Omitting one equation will provide at 
+least one soluton but no one point can satisfy both equations as they do not intersect with each other.
+
+The FVCS theorem is as follows:
+
+### Theorem FVCS Free Variables for Consistent Systems
+Suppose A is the augmented matrix of a consistent system of linear equations with  n variables. Suppose also that B is a row-equivalent matrix in reduced row-echelon 
+form with r rows that are not completely zeros. Then the solution set can be described with n -􀀀 r free variables.
+
+In this case, the value r will overcount the number of echelon-reduced rows by the number of inconsistent equations. If r > n, then the formula would result in a negative amount of free variables and it could immediatley be concluded that this was an inconsistent system.

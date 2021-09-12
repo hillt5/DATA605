@@ -1,0 +1,126 @@
+---
+title: "Untitled"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+ASSIGNMENT 2
+IS 605 FUNDAMENTALS OF COMPUTATIONAL MATHEMATICS - 2015
+
+1. Problem set 1
+(1) Show that At A != AAt in general. (Proof and demonstration.)
+
+__Definition TM Transpose of a Matrix__
+Given an m x n matrix A, its transpose is the n x m matrix At given by
+Atij = [A]ji ; 1 <= i <= n; 1 <= j <= m.
+
+Based on the text's definition of a tranpose, it is evident ATA is equal to AAT if and only if the initial matrix is square, or m = n. AAT for an m x n matrix will always have the dimensions, m x m, and AAT will be n x n.
+
+
+
+(2) For a special type of square matrix A, we get AT A = AAT . Under what conditions could this be true? (Hint: The Identity matrix I is an example of such a matrix).
+Please typeset your response using LaTeX mode in RStudio. If you do it in paper, please either scan or take a picture of the work and submit it. Please ensure that your image is legible and that your submissions are named using your first initial, last name, assignment and problem set within the assignment. E.g. LFulton_Assignment2_PS1.png
+
+The text also gives a proof and statement of transposed matrix multiplication:
+
+__Theorem MMT Matrix Multiplication and Transposes__
+Suppose A is an m x n matrix and B is an n x p matrix. Then (AB)t = BtAt.
+
+In this proof, if B is equal to At then substituting in would give the following equations:
+
+(AAt)t = (At)t At; substitute B = At
+
+As also mentioned in the reading, the transpose of an already tranposed matrix is equal to the original, untransposed matrix.
+
+(AAt)t = AAt ; substitute (At)t = A
+
+AAt = (AAt)t ; take the transpose of both sides
+
+Therefore, AtA = AAt if AtA = (AAt)t. Descriptively, this means that the matrix product of A and its transpose are equal to the product of opposite order when the transpose of the matrix product is equal to itself. This is a convenient format, as it fits the description of a symmetric matrix:
+
+__Definition of a SYM Symmetric Matrix__
+The matrix A is symmetric if A = At.
+
+Therefore, if a the producct of a matrix and its transpose, AAt, are symmetric, then AtA = AAt.
+
+
+2. Problem set 2
+Matrix factorization is a very important problem. There are supercomputers built just to do matrix factorizations. Every second you are on an airplane, matrices are being factorized. Radars that track flights use a technique called Kalman Filtering. At the heart of Kalman Filtering is a Matrix Factorization operation. Kalman Filters are solving linear systems of equations when they track your  flight using radars.
+
+Write an R function to factorize a square matrix A into LU or LDU, whichever you prefer. Please submit your response in an R Markdown document using our class naming
+convention, E.g. LFulton_Assignment2_PS2.png
+
+You don't have to worry about permuting rows of A and you can assume that A is less than 5x5, if you need to hard-code any variables in your code. If you doing the entire assignment in R, then please submit only one markdown document for both the problem. 
+
+
+__For this problem set, I'm going to take advantage of the code I wrote for solving systems of equations by finding their reduced echelon form. I have changed it to generalize to up to a 5 x 5 matrix. I have also added some features discussed during the student example during last week's class to test for matrix size. There is likely a more general form instead of iterating through each row and testing matrix size, but this code had the advantage of being recycled from a previous assignment and passing test cases of different size.__
+
+
+
+
+```{r, get-solution-matrix}
+getSolutions <- function(matAB) {
+  n <- ncol(matAB)
+  m <- nrow(matAB)
+            
+  if ((n != m) & (n > 5)) {
+    print("Input needs to be a matrix with dimensions m = n < 5")
+  } else {
+    if(matAB[1,1] != 0) {
+      matAB[1,] <- matAB[1,]/matAB[1,1] #set the first row's first column equal to one
+      }
+      
+    if(n >1) { #check whether matrix is greater than 1 x 1
+      if (matAB[2,2] != 0) {
+        matAB[2,] <- matAB[2,] - (matAB[1,] *matAB[2,1]) #set the second row's first column equal to zero
+        matAB[2,] <- matAB[2,]/matAB[2,2] #set the second row's second column equal to one
+      }
+    }
+    
+    if(n > 2) { #check whether matrix is greater than 2 x 2
+      if (matAB[3,3] != 0) {
+        matAB[3,] <- matAB[3,] - (matAB[1,] *matAB[3,1]) #set the third row's first column equal to zero
+        matAB[3,] <- matAB[3,] - (matAB[2,] *matAB[3,2]) #set the third row's first column equal to zero
+        matAB[3,] <- matAB[3,]/matAB[3,3] #set the third row's third column equal to one
+      }
+    }
+    
+    if(n > 3) { #check whether matrix is greater than 3 x 3
+      if (matAB[4,4] != 0) {
+        matAB[4,] <- matAB[4,] - (matAB[1,] *matAB[4,1]) #set the fourth row's first column equal to zero
+        matAB[4,] <- matAB[4,] - (matAB[2,] *matAB[4,2]) #set the fourth row's second column equal to zero
+        matAB[4,] <- matAB[4,] - (matAB[3,] *matAB[4,3]) #set the fourth row's third column equal to zero
+        matAB[4,] <- matAB[4,]/matAB[4,4] #set the fourth row's fourth column equal to one
+      }
+      }
+    
+    if(n > 4) { #check whether matrix is greater than 4 x 4
+      if (matAB[5,5] != 0) {
+        matAB[5,] <- matAB[5,] - (matAB[1,] *matAB[5,1]) #set the fifth row's first column equal to zero
+        matAB[5,] <- matAB[5,] - (matAB[2,] *matAB[5,2]) #set the fifth row's second column equal to zero
+        matAB[5,] <- matAB[5,] - (matAB[3,] *matAB[5,3]) #set the fifth row's third column equal to zero
+        matAB[5,] <- matAB[5,] - (matAB[4,] *matAB[5,4]) #set the fifth row's fourth column equal to zero
+        matAB[5,] <- matAB[5,]/matAB[5,5] #set the fifth row's fifth column equal to one
+      }
+    }
+   
+  print(matAB)
+  }
+}
+ 
+``` 
+
+
+```{r, assignment-test}
+
+mat_test55 = matrix(c(5,4,3,1,8, 9,3,2,1,0, 0,2,4,7,9, 1,2,0,9,8, 0,0,2,8,7),5,5)
+
+mat_test33 = matrix(c(1,5,3,2,1,0,4,8,1), 3,3)
+
+getSolutions(mat_test33)
+
+
+```
